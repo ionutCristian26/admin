@@ -12,6 +12,8 @@ import {HttpClient} from "@angular/common/http";
   styleUrls: ['./smart-table.component.scss'],
 })
 export class SmartTableComponent {
+  
+  baseUrl = 'https://api-shipping.osc-fr1.scalingo.io';
 
   settings = {
     add: {
@@ -71,7 +73,7 @@ export class SmartTableComponent {
 
   private loadData() {
     this.source = new ServerDataSource(this.http, {
-      endPoint: `${environment.baseUrl}/manage/buyer`,
+      endPoint: `${this.baseUrl}/manage/buyer`,
       totalKey: '_total_items',
       dataKey: '_embedded.Source',
       pagerPageKey: 'page',
