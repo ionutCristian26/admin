@@ -65,6 +65,9 @@ export class SuppliersComponent implements OnInit {
     },
   };
 
+  baseUrl = 'https://api-shipping.osc-fr1.scalingo.io';
+
+
   constructor(private http: HttpClient) { }
 
   ngOnInit() {
@@ -73,7 +76,7 @@ export class SuppliersComponent implements OnInit {
 
   private loadData() {
     this.source = new ServerDataSource(this.http, {
-      endPoint: `${environment.baseUrl}/manage/supplier`,
+      endPoint: `${this.baseUrl}/manage/supplier`,
       totalKey: '_total',
       dataKey: '_embedded.Source',
       pagerPageKey: 'page',

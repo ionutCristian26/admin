@@ -5,7 +5,6 @@ import {HttpClient} from '@angular/common/http';
 import {EditBuyersComponent} from '../../custom/edit-buyers/edit-buyers.component';
 import {NbDialogService} from '@nebular/theme';
 
-
 @Component({
   selector: 'ngx-buyers',
   templateUrl: './buyers.component.html',
@@ -67,6 +66,7 @@ export class BuyersComponent implements OnInit {
     },
   };
 
+  baseUrl = 'https://api-shipping.osc-fr1.scalingo.io';
   constructor(private http: HttpClient, private dialogService: NbDialogService) {
   }
 
@@ -76,7 +76,7 @@ export class BuyersComponent implements OnInit {
 
   private loadData() {
     this.source = new ServerDataSource(this.http, {
-      endPoint: `${environment.baseUrl}/manage/buyer`,
+      endPoint: `${this.baseUrl}/manage/buyer`,
       totalKey: '_total',
       dataKey: '_embedded.Source',
       pagerPageKey: 'page',
