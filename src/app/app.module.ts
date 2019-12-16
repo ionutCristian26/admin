@@ -22,9 +22,6 @@ import {
   NbInputModule,
 
 } from '@nebular/theme';
-import { ButtonComponent } from './custom/button/button.component';
-// @ts-ignore
-import { EditBuyersComponent } from './custom/edit-buyers/edit-buyers.component';
 
 @NgModule({
 
