@@ -23,11 +23,12 @@ import {
 
 } from '@nebular/theme';
 import { ButtonComponent } from './custom/button/button.component';
+// @ts-ignore
 import { EditBuyersComponent } from './custom/edit-buyers/edit-buyers.component';
 
 @NgModule({
 
-    declarations: [AppComponent, ButtonComponent, EditBuyersComponent],
+    declarations: [AppComponent],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
@@ -51,7 +52,6 @@ import { EditBuyersComponent } from './custom/edit-buyers/edit-buyers.component'
     CoreModule.forRoot(),
   ],
   bootstrap: [AppComponent],
-  entryComponents: [EditBuyersComponent],
 })
 export class AppModule {
 }

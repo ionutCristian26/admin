@@ -67,6 +67,7 @@ export class BuyersComponent implements OnInit {
   };
 
   baseUrl = 'https://api-shipping.osc-fr1.scalingo.io';
+
   constructor(private http: HttpClient, private dialogService: NbDialogService) {
   }
 
