@@ -5,6 +5,7 @@ import { PagesComponent } from './pages.component';
 import { NotFoundComponent } from './miscellaneous/not-found/not-found.component';
 import { BuyersComponent } from './buyers/buyers.component';
 import { SuppliersComponent } from './suppliers/suppliers.component';
+import {AuthGuard} from "../guards/auth.guard";
 
 const routes: Routes = [{
   
@@ -14,10 +15,12 @@ const routes: Routes = [{
     {
       path: 'buyers',
       component: BuyersComponent,
+      canActivate: [AuthGuard]
     },
     {
       path: 'suppliers',
       component: SuppliersComponent,
+      canActivate: [AuthGuard]
     },
     {
       path: 'tables',

@@ -1,15 +1,24 @@
 import { Injectable } from '@angular/core';
-import {HttpClient} from "@angular/common/http";
+import {HttpClient, HttpHeaders} from "@angular/common/http";
+import {BehaviorSubject} from "rxjs";
 
 @Injectable({
   providedIn: 'root'
 })
 export class BuyerService {
   private baseUrl = 'https://api-shipping.osc-fr1.scalingo.io';
+  private currentSubject:BehaviorSubject<any>;
+  private currentUser;
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {
+    this.currentSubject = new BehaviorSubject(JSON.parse(localStorage.getItem('currentUser')));
+    this.currentUser = this.currentSubject.getValue();
+  }
 
   update(data) {
-    return this.http.patch(this.baseUrl + `/manage/buyer`, data);
+    let header = new HttpHeaders();
+    header = header.append('Authorization', 'Bearer ' + this.currentUser.access_token);
+
+    return this.http.patch(this.baseUrl + `/manage/buyer`, data, {headers: header});
   }
 }

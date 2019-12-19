@@ -16,6 +16,7 @@ import {SuppliersComponent} from './suppliers/suppliers.component';
 import {Ng2SmartTableModule} from 'ng2-smart-table';
 import {EditBuyersComponent} from "../custom/edit-buyers/edit-buyers.component";
 import {FormsModule} from "@angular/forms";
+import {AlertModule} from "ngx-alerts";
 
 @NgModule({
     imports: [
@@ -29,6 +30,7 @@ import {FormsModule} from "@angular/forms";
         NbCardModule,
         NbInputModule,
         FormsModule,
+        AlertModule,
     ],
     declarations: [
         PagesComponent,

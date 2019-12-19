@@ -22,6 +22,7 @@ import {
   NbInputModule,
 
 } from '@nebular/theme';
+import {AlertModule, AlertService} from "ngx-alerts";
 
 @NgModule({
 
@@ -47,6 +48,7 @@ import {
       messageGoogleMapKey: 'AIzaSyA_wNuCzia92MAmdLRzmqitRGvCF7wCZPY',
     }),
     CoreModule.forRoot(),
+    AlertModule.forRoot({maxMessages: 5, timeout: 5000, position: 'right'})
   ],
   bootstrap: [AppComponent],
 })

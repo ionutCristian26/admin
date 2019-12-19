@@ -3,6 +3,7 @@ import {NbDialogService} from '@nebular/theme';
 import {BuyersComponent} from "../../pages/buyers/buyers.component";
 import {BuyerService} from "../../services/buyer.service";
 import {log} from "util";
+import {AlertService} from "ngx-alerts";
 
 @Component({
     selector: 'ngx-edit-buyers',
@@ -96,7 +97,8 @@ export class EditBuyersComponent implements OnInit {
     };
 
     constructor(private dialogService: NbDialogService,
-                private buyerService: BuyerService) {
+                private buyerService: BuyerService,
+                private alertService: AlertService) {
     }
 
     ngOnInit() {
@@ -108,7 +110,7 @@ export class EditBuyersComponent implements OnInit {
         this.update.address = this.rowData.address;
         this.update.companyName = this.rowData.companyName;
         this.update.email = this.rowData.email;
-        this.update.website = this.rowData.webiste;
+        this.update.website = this.rowData.website;
         this.update.country = this.rowData.country;
         this.update.phone = this.rowData.phone;
     }
@@ -116,9 +118,10 @@ export class EditBuyersComponent implements OnInit {
     send() {
         console.log(this.update)
         this.buyerService.update(this.update).subscribe(res => {
-            console.log(res)
+            this.alertService.success('Update with success');
         }, err => {
-            console.log(err);
+            console.log(err)
+            this.alertService.danger(err.message);
         })
     }
 }
