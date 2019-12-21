@@ -23,6 +23,8 @@ import {
 
 } from '@nebular/theme';
 import {AlertModule, AlertService} from "ngx-alerts";
+import { EditSupplierComponent } from './custom/edit-supplier/edit-supplier.component';
+import {FormsModule} from "@angular/forms";
 
 @NgModule({
 
@@ -48,7 +50,8 @@ import {AlertModule, AlertService} from "ngx-alerts";
       messageGoogleMapKey: 'AIzaSyA_wNuCzia92MAmdLRzmqitRGvCF7wCZPY',
     }),
     CoreModule.forRoot(),
-    AlertModule.forRoot({maxMessages: 5, timeout: 5000, position: 'right'})
+    AlertModule.forRoot({maxMessages: 5, timeout: 5000, position: 'right'}),
+    FormsModule
   ],
   bootstrap: [AppComponent],
 })

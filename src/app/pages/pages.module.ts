@@ -4,7 +4,7 @@ import {
     NbCardModule,
     NbIconModule,
     NbButtonModule,
-    NbCardBodyComponent, NbInputModule,
+    NbCardBodyComponent, NbInputModule, NbSelectModule,
 } from '@nebular/theme';
 
 import {ThemeModule} from '../@theme/theme.module';
@@ -17,6 +17,7 @@ import {Ng2SmartTableModule} from 'ng2-smart-table';
 import {EditBuyersComponent} from "../custom/edit-buyers/edit-buyers.component";
 import {FormsModule} from "@angular/forms";
 import {AlertModule} from "ngx-alerts";
+import {EditSupplierComponent} from "../custom/edit-supplier/edit-supplier.component";
 
 @NgModule({
     imports: [
@@ -31,14 +32,16 @@ import {AlertModule} from "ngx-alerts";
         NbInputModule,
         FormsModule,
         AlertModule,
+        NbSelectModule,
     ],
     declarations: [
         PagesComponent,
         BuyersComponent,
         SuppliersComponent,
         EditBuyersComponent,
+        EditSupplierComponent
     ],
-    entryComponents: [EditBuyersComponent],
+    entryComponents: [EditBuyersComponent, EditSupplierComponent],
 })
 export class PagesModule {
 }

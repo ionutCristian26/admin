@@ -5,7 +5,7 @@ import {BehaviorSubject} from "rxjs";
 @Injectable({
   providedIn: 'root'
 })
-export class BuyerService {
+export class SupplierService {
   private baseUrl = 'https://api-shipping.osc-fr1.scalingo.io';
   private currentSubject:BehaviorSubject<any>;
   private currentUser;
@@ -19,6 +19,6 @@ export class BuyerService {
     let header = new HttpHeaders();
     header = header.append('Authorization', 'Bearer ' + this.currentUser.access_token);
 
-    return this.http.patch(this.baseUrl + `/manage/buyer/`, data, {headers: header});
+    return this.http.patch(this.baseUrl + `/manage/supplier/`, data, {headers: header});
   }
 }

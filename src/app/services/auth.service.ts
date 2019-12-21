@@ -31,7 +31,7 @@ export class AuthService {
 
     return this.http.post(this.baseUrl + '/oauth2/generate', body, {headers:header}).pipe(map(res => {
       if (res && res['access_token']) {
-        user.timestamp = new Date().getTime();
+        res['timestamp'] = new Date().getTime();
         localStorage.setItem('currentUser', JSON.stringify(res));
         this.currentUserSubject.next(res)
       }

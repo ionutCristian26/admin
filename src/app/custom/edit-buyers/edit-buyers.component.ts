@@ -1,5 +1,5 @@
-import {Component, OnInit, Input, EventEmitter, Output, TemplateRef} from '@angular/core';
-import {NbDialogService} from '@nebular/theme';
+import {Component, OnInit, Input, EventEmitter, Output, TemplateRef, ViewChild, ElementRef} from '@angular/core';
+import {NbDialogRef, NbDialogService} from '@nebular/theme';
 import {BuyersComponent} from "../../pages/buyers/buyers.component";
 import {BuyerService} from "../../services/buyer.service";
 import {log} from "util";
@@ -71,9 +71,9 @@ import {AlertService} from "ngx-alerts";
             
         </nb-card-body>
         <nb-card-footer class="mt-3">
-          <button type="submit" nbButton status="success" style="float: left; margin-right: 10px" (click)="send()">Send</button>
-          <button nbButton status="danger" (click)="ref.close()" style="float: right; margin-left: 10px"
-                  id="close">Close
+          <button type="submit" nbButton status="success" style="float: right; margin-right: 10px" (click)="send()">Send</button>
+          <button nbButton status="danger" (click)="ref.close()" style="float: left; margin-left: 10px"
+                  id="close" #close>Close
           </button>
         </nb-card-footer>
       </nb-card>
@@ -85,7 +85,8 @@ export class EditBuyersComponent implements OnInit {
     @Input() value: any;    // This hold the cell value
     @Input() rowData: any;
 
-    @Output() showEditModal: EventEmitter<any> = new EventEmitter<any>();
+    @Output() refresh: EventEmitter<any> = new EventEmitter<any>();
+
     public update = {
         id: '',
         address: '',
@@ -94,6 +95,8 @@ export class EditBuyersComponent implements OnInit {
         website: '',
         country: '',
         phone: '',
+        type: 'buyer',
+        tradeRoles: 'company',
     };
 
     constructor(private dialogService: NbDialogService,
@@ -111,16 +114,16 @@ export class EditBuyersComponent implements OnInit {
         this.update.companyName = this.rowData.companyName;
         this.update.email = this.rowData.email;
         this.update.website = this.rowData.website;
-        this.update.country = this.rowData.country;
+        this.update.country = this.rowData.country.code;
         this.update.phone = this.rowData.phone;
     }
 
     send() {
-        console.log(this.update)
         this.buyerService.update(this.update).subscribe(res => {
             this.alertService.success('Update with success');
+            this.refresh.emit();
+            document.getElementById('close').click();
         }, err => {
-            console.log(err)
             this.alertService.danger(err.message);
         })
     }

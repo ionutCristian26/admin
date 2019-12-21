@@ -3,6 +3,7 @@ import { EditBuyersComponent } from '../../custom/edit-buyers/edit-buyers.compon
 import { HttpClient } from '@angular/common/http';
 import { ServerDataSource } from 'ng2-smart-table';
 import { environment } from '../../../environments/environment';
+import {EditSupplierComponent} from "../../custom/edit-supplier/edit-supplier.component";
 
 @Component({
   selector: 'ngx-suppliers',
@@ -40,6 +41,13 @@ export class SuppliersComponent implements OnInit {
         title: 'Country',
         type: 'string',
         filter: false,
+        valuePrepareFunction: (cell, row) => {
+          if (row.country !== null) {
+            return row.country.name;
+          } else {
+            return '';
+          }
+        },
       },
       email: {
         title: 'Email',
@@ -60,13 +68,17 @@ export class SuppliersComponent implements OnInit {
         title: '',
         type: 'custom',
         filter: false,
-        renderComponent: EditBuyersComponent
+        renderComponent: EditSupplierComponent,
+        onComponentInitFunction: (instance) => {
+          instance.refresh.subscribe(event => {
+            this.refresh();
+          });
+        },
       }
     },
   };
 
   baseUrl = 'https://api-shipping.osc-fr1.scalingo.io';
-
 
   constructor(private http: HttpClient) { }
 
@@ -81,5 +93,9 @@ export class SuppliersComponent implements OnInit {
       dataKey: '_embedded.Source',
       pagerPageKey: 'page',
     });
+  }
+
+  private refresh() {
+    this.source.refresh();
   }
 }
