@@ -27,6 +27,11 @@ export class BuyersComponent implements OnInit {
             perPage: 10,
         },
         columns: {
+            id: {
+                title: 'Id',
+                type: 'string',
+                filter: false,
+            },
             address: {
                 title: 'Address',
                 type: 'string',

@@ -68,7 +68,7 @@ import {AlertService} from "ngx-alerts";
                         </div>
                     </div>
                 </div>
-            
+
         </nb-card-body>
         <nb-card-footer class="mt-3">
           <button type="submit" nbButton status="success" style="float: right; margin-right: 10px" (click)="send()">Send</button>
@@ -114,7 +114,9 @@ export class EditBuyersComponent implements OnInit {
         this.update.companyName = this.rowData.companyName;
         this.update.email = this.rowData.email;
         this.update.website = this.rowData.website;
-        this.update.country = this.rowData.country.code;
+        if (this.rowData.country !== null) {
+          this.update.country = this.rowData.country.code;
+        }
         this.update.phone = this.rowData.phone;
     }
 
