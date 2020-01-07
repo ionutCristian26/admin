@@ -6,7 +6,7 @@ import {BehaviorSubject} from "rxjs";
   providedIn: 'root'
 })
 export class BuyerService {
-  private baseUrl = 'https://api-shipping.osc-fr1.scalingo.io';
+  private baseUrl = 'https://shipments-api.osc-fr1.scalingo.io';
   private currentSubject:BehaviorSubject<any>;
   private currentUser;
 
