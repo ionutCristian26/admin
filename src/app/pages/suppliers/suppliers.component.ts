@@ -78,7 +78,7 @@ export class SuppliersComponent implements OnInit {
     },
   };
 
-  baseUrl = 'https://api-shipping.osc-fr1.scalingo.io';
+  baseUrl = 'https://shipments-api.osc-fr1.scalingo.io';
 
   constructor(private http: HttpClient) { }
 

@@ -8,6 +8,8 @@ import {BehaviorSubject} from "rxjs";
 export class BuyerService {
   private baseUrl = 'https://shipments-api.osc-fr1.scalingo.io';
   private currentSubject:BehaviorSubject<any>;
+
+
   private currentUser;
 
   constructor(private http: HttpClient) {
