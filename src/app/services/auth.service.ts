@@ -8,7 +8,7 @@ import {Router} from "@angular/router";
   providedIn: 'root'
 })
 export class AuthService {
-  private baseUrl = 'https://shipments-api.osc-fr1.scalingo.io';
+  private baseUrl = 'https://bdndev.com/~devbdn';
 
   private currentUserSubject: BehaviorSubject<any>;
 
